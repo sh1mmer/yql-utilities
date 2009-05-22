@@ -1,5 +1,6 @@
 h2. YQL-Utilities
 
+
 This widget contains files associated with the construction of a JavaScript widget for displaying data obtained from YQL.  This widget uses the following external utilities:
 * <a href="http://developer.yahoo.com/yui/get">YUI GET</a> - Obtains data from public YQL URI (avoids same origin policy issue)
 
@@ -28,31 +29,31 @@ The HTML file displays sample methods for initializing and rendering a YQL widge
 
 Going through the above example, here is the definition for how to format the requests:
 
-Line 1
+<b>Line 1</b><br />
 Include the widget JavaScript file
 
-Line 2
+<b>Line 2</b><br />
 Create the container the you would like to drop the widget into (must have an id)
 
-Line 4
-(OPTIONAL) Define the config object. This object has the following available key / value pairs:
+<b>Line 4</b><br />
+<i>(OPTIONAL)</i> Define the config object. This object has the following available key / value pairs:
 * debug (true / false) - If set to true, status messages will be displayed via console.log during widget rendering
 
-Line 5
+<b>Line 5</b><br />
 Define the format string.  This string will be what is inserted into the container defined on line 2 and will be added for each result returned by YQL and may contain HTML / CSS / JavaScript.  Any text that is added between curly brackets (e.g. {test}) will be re-rendered as the associated data returned by YQL.  For instance, if you go to the <a href="http://developer.yahoo.com/yql/console/?q=select%20*%20from%20weather.forecast%20where%20location%3D90210">YQL Console</a> and run the weather query, {item.description} will relate to the results at query->results->channel->item->description.
 
-Line 6
+<b>Line 6</b><br />
 Define the YQL query to pass to the public YQL URI. 
 
-Line 7
+<b>Line 7</b><br />
 Define the id of the container you wish to insert the widget into
 
-Line 8
+<b>Line 8</b><br />
 Push the widget on the stack.  If you have multiple widgets to be rendered, you would push each widget on the load stack using push before rendering (as seen on line 9).  The push function accepts the following parameters:
-* YQL Query (REQUIRED) - The query defined on line 6
-* Config (OPTIONAL) - The config object defined on line 4
-* Format (REQUIRED) - The content to add for each result into the container defined
-* Insert Element (REQUIRED) - The id of the container to insert the widget into
+* YQL Query <i>(REQUIRED)</i> - The query defined on line 6
+* Config <i>(OPTIONAL)</i> - The config object defined on line 4
+* Format <i>(REQUIRED)</i> - The content to add for each result into the container defined
+* Insert Element <i>(REQUIRED)</i> - The id of the container to insert the widget into
 
-Line 9
+<b>Line 9</b><br />
 Render all widgets pushed onto the load stack
