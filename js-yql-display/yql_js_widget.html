@@ -13,26 +13,14 @@ div.imgCnt div.imgTitle{ padding: 5px; font-size: 11px; text-align:center; }
 <script type="text/javascript">
 var config = {'debug' : true};
 var format = '<div class="imgCnt"><a href="http://www.flickr.com/photos/{owner}/{id}/" target="_blank"><img src="http://farm3.static.flickr.com/{server}/{id}_{secret}.jpg?v=0" width="80" height="80" /></a><div class="imgTitle"><a href="http://www.flickr.com/photos/{owner}/{id}/">{title}</a></div></div>';
-var yqlQuery = 'select * from flickr.photos.search where user_id="28401989@N04"';
+var yqlQuery = 'select * from flickr.photos.search where text="YDN"';
 var insertEl = 'widgetContainer';
 yqlWidget.push(yqlQuery, config, format, insertEl);
 
 var format2 = '<br style="clear:both" />{item.description}';
-var yqlQuery2 = 'select * from weather.forecast where location = 94568';
+var yqlQuery2 = 'select * from weather.forecast where location = 90210';
 var insertEl2 = 'widgetContainer2';
 //yqlWidget.init(yqlQuery2, config2, format2, insertEl2);
 yqlWidget.push(yqlQuery2, config, format2, insertEl2);
 yqlWidget.render();
 </script>
-
-<!--
-<script type="text/javascript">
-var config = {'debug' : true};
-var format = ['<div class="imgCnt"><a href="http://www.flickr.com/photos/{owner}/{id}/" target="_blank"><img src="http://farm3.static.flickr.com/{server}/{id}_{secret}.jpg?v=0" width="80" height="80" /></a><div class="imgTitle"><a href="http://www.flickr.com/photos/{owner}/{id}/">{title}</a></div></div>',
-              '{item.description}'];
-var yqlQuery = ['select * from flickr.photos.search where user_id="28401989@N04"',
-				'select * from weather.forecast where location = 94568';
-var insertEl = ['widgetContainer', 'widgetContainer2'];
-yqlWidget.init(yqlQuery, config, format, insertEl);
-</script>
--->
