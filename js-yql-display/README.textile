@@ -5,24 +5,24 @@ This widget contains files associated with the construction of a JavaScript widg
 
 There are two files associated with the widget:
 
-<b>yql_js_widget.js</b>
+<b>yql_js_widget.js</b><br>
 This is the JavaScript widget that captures the YQL data and parses the formatting defined by the user.  This file needs to be included where the YQL JS widget is to be displayed.
 
-<b>yql_js_widget.html</b>
+<b>yql_js_widget.html</b><br>
 The HTML file displays sample methods for initializing and rendering a YQL widget.  See the following example:
 
 <notextile>
 <pre>
-1.  <script type="text/javascript" src="yql_js_widget.js"></script>
-2.  <div id="widgetContainer"></div>
-3.  <script type="text/javascript">
+1.  &lt;script type="text/javascript" src="yql_js_widget.js"&gt;&lt;/script&gt;
+2.  &lt;div id="widgetContainer"&gt;&lt;/div&gt;
+3.  &lt;script type="text/javascript"&gt;
 4.  var config = {'debug' : true};
-5.  var format = '<br style="clear:both" />{item.description}';
+5.  var format = '&lt;br style="clear:both" /&gt;{item.description}';
 6.  var yqlQuery = 'select * from weather.forecast where location = 90210';
 7.  var insertEl = 'widgetContainer';
 8.  yqlWidget.push(yqlQuery, config, format, insertEl);
 9.  yqlWidget.render();
-10. </script>
+10. &lt;/script&gt;
 </pre>
 </notextile>
 
