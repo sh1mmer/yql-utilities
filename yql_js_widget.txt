@@ -1,0 +1,48 @@
+//MUSIC SEARCH
+var config = {'title' : '{title}', 'description' : '{label}'};
+var yqlQuery = 'select * from music.release.artist where id="256352" | unique(field="title")';
+var insertEl = 'widgetContainer';
+yqlWidget.init(yqlQuery, config, insertEl);
+
+
+
+//FLICKER PHOTO SEARCH
+var config = {'title' : '{title}', 'icon'  : '<img src="http://farm3.static.flickr.com/{server}/{id}_{secret}.jpg?v=0" />'};
+var yqlQuery = 'select * from flickr.photos.search where text="san francisco"';
+var insertEl = 'widgetContainer';
+yqlWidget.init(yqlQuery, config, insertEl);
+
+
+
+//WEATHER DATA
+var config = {'icon'  : '{item.description}'};
+var yqlQuery = 'select * from weather.forecast where location = 94568';
+var insertEl = 'widgetContainer';
+yqlWidget.init(yqlQuery, config, insertEl);
+
+
+
+
+//FLICKR SEARCH
+<script type="text/javascript" src="http://www.liquidmediatech.com/projects/yql/yql_js_widget.js"></script>
+
+<div id="widgetContainer"></div>
+
+<style>
+div.imgCnt{ border: 1px solid rgb(96, 96, 96); margin: 5px 5px 5px 0pt; float: left; background-color: rgb(241, 241, 241); }
+div.imgCnt img{ border:0; margin:5px; }
+div.imgCnt div.imgTitle{ padding: 5px; font-size: 11px; text-align:center; }
+</style>
+
+<script type="text/javascript">
+var config = {'icon'  : '<div class="imgCnt"><a href="http://www.flickr.com/photos/{owner}/{id}/" target="_blank"><img src="http://farm3.static.flickr.com/{server}/{id}_{secret}.jpg?v=0" width="80" height="80" /></a><div class="imgTitle"><a href="http://www.flickr.com/photos/{owner}/{id}/">{title}</a></div></div>'};
+var yqlQuery = 'select * from flickr.photos.search where user_id="28401989@N04"';
+var insertEl = 'widgetContainer';
+yqlWidget.init(yqlQuery, config, insertEl);
+</script>
+
+
+
+
+
+
