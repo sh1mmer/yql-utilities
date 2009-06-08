@@ -1,3 +1,13 @@
+/*************************************************************************************************************
+yql_js_widget.js
+YQL JavaScript Widget
+
+Created by Jonathan LeBlanc on 06/08/09.
+Copyright (c) 2009 Yahoo! Inc. All rights reserved.
+ 
+The copyrights embodied in the content of this file are licensed under the BSD (revised) open source license.
+*************************************************************************************************************/
+
 //YUI includes for GET utility
 if (! window.YAHOO){
 	document.write('<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo/yahoo-min.js" ></script>' +
