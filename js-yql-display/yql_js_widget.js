@@ -1,11 +1,11 @@
 /*************************************************************************************************************
-yql_js_widget.js
-YQL JavaScript Widget
-
-Created by Jonathan LeBlanc on 06/08/09.
-Copyright (c) 2009 Yahoo! Inc. All rights reserved.
- 
-The copyrights embodied in the content of this file are licensed under the BSD (revised) open source license.
+* yql_js_widget.js
+* YQL JavaScript Widget
+*
+* Created by Jonathan LeBlanc on 06/08/09.
+* Copyright (c) 2009 Yahoo! Inc. All rights reserved.
+* 
+* The copyrights embodied in the content of this file are licensed under the BSD (revised) open source license.
 *************************************************************************************************************/
 
 //YUI includes for GET utility
