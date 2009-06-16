@@ -33,19 +33,19 @@ yqlWidget = function() {
 	* Description: Use the query provided to make a request to 
 	*              YQL endpoint to capture data
 	************************************************************/
-    var getYQLData = function(query){
-		//prepare the URL for the Yahoo! Site Explorer API:
-        var sURL = yqlPublicQueryURL + "q=" + query + "&format=json&callback=yqlWidget.getYQLDataCallback";
+	var getYQLData = function(query){
+		//prepare the URL for YQL query:
+        	var sURL = yqlPublicQueryURL + "q=" + query + "&format=json&callback=yqlWidget.getYQLDataCallback";
         
 		//make GET request to YQL with provided query
-        var transactionObj = YAHOO.util.Get.script(sURL, {
-            onSuccess : onYQLReqSuccess,
+        	var transactionObj = YAHOO.util.Get.script(sURL, {
+            		onSuccess : onYQLReqSuccess,
 			onFailure : onYQLReqFailure,
-            scope     : this
-        });
+            		scope     : this
+        	});
 		
 		return transactionObj;
-    }
+    	}
 	
 	/************************************************************
 	* Method: Parse YQL Results
@@ -101,7 +101,7 @@ yqlWidget = function() {
 	* Functions: init - starts yql parsing functions
 	*			 getYQLDataCallback - yql run callback
 	************************************************************/
-    return {
+	return {
 		//push widget on the load stack
 		push: function(query, config, format, insertEl){
 			//validate widget variables
@@ -118,7 +118,7 @@ yqlWidget = function() {
 		render: function(){ if (widgetStack.length > 0){ widgetStack.pop()(); } },
 	
 		//widget initialization
-        init: function(query, config, format, insertEl){ 
+		init: function(query, config, format, insertEl){ 
 			resultFormat = format; queryInsert = insertEl;
 			if (config){ setupConfig = config; }
 			return getYQLData(query);
