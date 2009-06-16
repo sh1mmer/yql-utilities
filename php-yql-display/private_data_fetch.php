@@ -13,10 +13,14 @@ require_once('config.php');
 require_once('php_sdk/Yahoo.inc');
 require_once('CustomSessionStore.inc');
 
+//instantiate the Yahoo session store based on the store session token
 $sessionStore = new CustomSessionStore();
 $session = YahooSession::initSession(KEY, SECRET, APPID, TRUE, CALLBACK, $sessionStore);
-$updates = $session->query(stripslashes($_POST['q']));
+
+//capture user defined query & user badge
+$results = $session->query(stripslashes($_POST['q']));
 $badge = $session->query('select guid, familyName, givenName, image, location, nickname, profileUrl, status from social.profile where guid=me');
 
-echo json_encode(array('badge' => $badge, 'results' => $updates));
+//echo resulting json for fetch return
+echo json_encode(array('badge' => $badge, 'results' => $results));
 ?>

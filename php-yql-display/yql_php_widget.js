@@ -19,7 +19,7 @@ yqlWidget = function() {
 	var yqlPublicQueryURL = "http://query.yahooapis.com/v1/yql?";
 	var widgetStack = [];
 	var currString, resultFormat, queryInsert, setupConfig = [];
-	var regex = /\{([\w\-\.\[\]]+)\}/gi;
+	var regex = /\{([\w\-\.\[\]]+)\}/gi;	//regex to search for content within curly brackets
 	
 	/************************************************************
 	* Method: YUI POST Status Handlers 
@@ -37,6 +37,7 @@ yqlWidget = function() {
         var sURL = "private_data_fetch.php";
 		var postData = "q=" + query;
 		
+		//define connection manager event callbacks
 		var callback = {
 		  success:parseYQLResults,
 		  failure:onYQLReqFailure
@@ -67,7 +68,7 @@ yqlWidget = function() {
 				}
 			}
 			
-			//return data instantiation
+			//capture badge and display if a badge display is requested
 			var badge = jsonResponse['badge'].query.results.profile;
 			var html = "";
 			if (setupConfig['badge'] && badge){
@@ -76,7 +77,7 @@ yqlWidget = function() {
 					  + "<span>"+badge.status.message+"</span></div><div style='clear:both;height:1px;'></div>";
 			}
 			
-			//loop through all YQL return elements and result replace regex
+			//loop through all YQL return elements and replace user defined results within {} using regex
 			if (firstChild.length !== undefined){
 				//multiple results - array
 				var displayNum = (setupConfig['num_results']) ? setupConfig['num_results'] : firstChild.length;
@@ -88,7 +89,10 @@ yqlWidget = function() {
 				html += parseConfig(firstChild);
 			}
 			
+			//dump result HTML into user defined insert container
 			document.getElementById(queryInsert).innerHTML = html;
+			
+			//attempt to load next widget off of the stack
 			yqlWidget.render();
 		}
 	}
@@ -104,7 +108,7 @@ yqlWidget = function() {
 		//replace YQL result placeholders with return content
 		if (resultFormat){ currString = resultFormat.replace(regex, function(matchedSubstring, index, originalString){
 			var data = eval("currString." + index);
-			if (data == ""){ return "http://www.test.com"; }
+			if (data == ""){ return ""; }
 			
 			//convert timestamps to UTC strings
 			if(data.match(/^[0-9]{1,}$/)){ 
@@ -113,7 +117,7 @@ yqlWidget = function() {
 				return (currentTime.toUTCString());
 			}
 			
-			return eval("currString." + index);
+			return data;
 		});}
 		
 		return currString;

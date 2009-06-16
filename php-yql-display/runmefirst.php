@@ -13,9 +13,11 @@ require_once('config.php');
 require_once("php_sdk/Yahoo.inc");
 require_once("CustomSessionStore.inc");
    
+//initialize and store the user token store
 $sessionStore = new CustomSessionStore();
 $session = YahooSession::initSession(KEY, SECRET, APPID, TRUE, CALLBACK, $sessionStore);
 
+//display token store event message
 if ($session){
 	echo "Widget tokens stored - you may now delete this file from your repository";
 } else {
