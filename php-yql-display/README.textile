@@ -39,7 +39,7 @@ Follow the steps below to install the PHP YQL widget on your server:
 # Go to https://developer.yahoo.com/dashboard and create a new <b>OAuth</b> application (not an Open application).  The URL of this application should be where the widget will be installed.  Make sure to mark down your api key, shared secret key, and application id when your application is set up.
 # Copy all files in this widget example to the directory where you would like the widget to display 
 # If you are using the text file storage for your tokens, create a "tokens" directory.  This name should match the token_url paths within the config.php file.
-# Create a folder called "php_sdk".  Download the Y!OS PHP SDK from http://developer.yahoo.com/social/sdk/php/ .  Extract the contents of the yosdk/lib folder within the SDK to this new directory.
+# Create a folder called "php_sdk".  Download the Y!OS PHP SDK from http://github.com/yahoo/yos-social-php/tree/master and copy the contents of the lib folder within the SDK to this new directory.
 # Open config.php and change your key, secret and appid globals to the values obtained from step 1.  Change the token URLs to reflect the location defined in step 3.
 # Run runmefirst.php to store your access token.  It is very important that this file be run right after installation because it will store the token of the first user who authenticates it.  If you see a success message you may delete that file.
 # Your social updates widget is now ready to use.
