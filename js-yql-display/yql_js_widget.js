@@ -36,6 +36,13 @@ yqlWidget = function() {
 	var getYQLData = function(query){
 		//prepare the URL for YQL query:
         	var sURL = yqlPublicQueryURL + "q=" + query + "&format=json&callback=yqlWidget.getYQLDataCallback";
+
+		//add any environment files specified in the config
+			if (setupConfig['communitytables']) {
+				sURL += "&env=http%3A%2F%2Fdatatables.org%2Falltables.env";
+			} else if (setupConfig['env']) {
+				sURL += "&env=" + escape(setupConfig['env']);
+			}
         
 		//make GET request to YQL with provided query
         	var transactionObj = YAHOO.util.Get.script(sURL, {
@@ -69,11 +76,11 @@ yqlWidget = function() {
 		if (firstChild.length !== undefined){
 			//multiple results - array
 			for(var i = 0; i < firstChild.length; i++){
-				html += parseConfig(firstChild[i]);
+				html += parseFormat(firstChild[i]);
 			}
 		} else {
 			//single result - object
-			html += parseConfig(firstChild);
+			html += parseFormat(firstChild);
 		}
 		
 		document.getElementById(queryInsert).innerHTML = html;
@@ -81,11 +88,11 @@ yqlWidget = function() {
 	}
 	
 	/************************************************************
-	* Method: Parse Config
-	* Description: Loop through configuration array for provided
+	* Method: Parse Format
+	* Description: Loop through format array for provided
 	*              data set node
 	************************************************************/
-	var parseConfig = function(node){
+	var parseFormat = function(node){
 		currString = node;
 		
 		//replace YQL result placeholders with return content
